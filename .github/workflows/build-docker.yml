@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository code
+      - name: Checkout
         uses: actions/checkout@v3
       -
         name: Set up QEMU
@@ -27,5 +27,6 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v3
         with:
+          context: .
           push: true
           tags: lordsimpson/unattended-setups-api:latest
