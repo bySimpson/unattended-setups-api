@@ -33,3 +33,12 @@ jobs:
           platforms: linux/amd64,linux/arm64,linux/arm
           push: true
           tags: lordsimpson/unattended-setups-api:latest
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: trigger deploy
+        run: | 
+          curl -X POST ${{ secrets.PORTAINER_WEBHOOK_URL }} \
+           -H 'CF-Access-Client-Id: ${{ secrets.CLOUDFLARE_CLIENT_ID }}' \
+           -H 'CF-Access-Client-Secret: ${{ secrets.CLOUDFLARE_CLIENT_SECRET }}'
