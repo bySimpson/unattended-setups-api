@@ -1,7 +1,6 @@
-name: Build & Deploy docker image
+name: Build PR & upload to Docker Hub
 
 on:
-  push:
   pull_request:
     branches:
       - master
