@@ -43,5 +43,5 @@ jobs:
            -A "Mozilla/5.0 (compatible;  MSIE 7.01; Windows NT 5.0)" \
            -H "CF-Access-Client-Id: ${{ secrets.CLOUDFLARE_CLIENT_ID }}" \
            -H "CF-Access-Client-Secret: ${{ secrets.CLOUDFLARE_CLIENT_SECRET }}" \
-           -H "SKIP_CLOUDFLARE_CHECKS: ${{ secrets.CLOUDFLARE_SKIP_BOTS }}"\n
+           -H "SKIP_CLOUDFLARE_CHECKS: ${{ secrets.CLOUDFLARE_SKIP_BOTS }}" \
            -L
