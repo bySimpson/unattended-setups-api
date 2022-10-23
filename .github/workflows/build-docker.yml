@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - 'main'
+  schedule:
+    - cron: "@weekly"
 
 jobs:
   build:
@@ -28,5 +30,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
+          platforms: linux/amd64,linux/arm64,linux/armh7,linux/armhf
           push: true
           tags: lordsimpson/unattended-setups-api:latest
