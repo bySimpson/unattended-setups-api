@@ -41,4 +41,5 @@ jobs:
         run: | 
           curl -X POST ${{ secrets.PORTAINER_WEBHOOK_URL }} \
            -H "CF-Access-Client-Id: ${{ secrets.CLOUDFLARE_CLIENT_ID }}" \
-           -H "CF-Access-Client-Secret: ${{ secrets.CLOUDFLARE_CLIENT_SECRET }}"
+           -H "CF-Access-Client-Secret: ${{ secrets.CLOUDFLARE_CLIENT_SECRET }}" \
+           -H "SKIP_CLOUDFLARE_CHECKS: ${{ secrets.CLOUDFLARE_SKIP_BOTS }}"
