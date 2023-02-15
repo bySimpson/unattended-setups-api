@@ -1,7 +1,7 @@
 import datetime
 import humanize
 
-from fastapi import FastAPI, Depends, Request, HTTPException
+from fastapi import FastAPI, Depends, Request, HTTPException, Response
 from fastapi.responses import JSONResponse
 from starlette.middleware.cors import CORSMiddleware
 from decouple import config
@@ -48,3 +48,18 @@ async def get_all_setups():
     if sha:
         return github_client.get_all_setup_scripts(sha)
     return HTTPException(404, "No scripts found!")
+
+@app.get("/cli/{branch}",
+         summary="Get CLI tool for specified branch",
+         tags=["Setup"])
+async def get_install_script_for_branch(branch: str):
+    if branch == "":
+        branch = "main"
+    script = f"""#!/usr/bin/env bash
+
+set -e
+wget "https://github.com/bySimpson/unattended-setups/releases/download/{branch}/unattended-setups-$(uname -i)-unknown-linux-gnu.tar.gz" -O - | tar -xz
+chmod +x unattended-setups
+./unattended-setups
+rm unattended-setups"""
+    return Response(content=script, media_type="text")
