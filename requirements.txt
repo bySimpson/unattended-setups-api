@@ -2,7 +2,7 @@ uvicorn==0.22.0
 #pymongo==4.3.2
 #pydantic==1.10.2
 #fastapi_jwt_auth~=0.5.0
-python-decouple~=3.7
+python-decouple~=3.8
 dnspython~=2.3.0
 requests==2.30.0
 humanize==4.4.0
