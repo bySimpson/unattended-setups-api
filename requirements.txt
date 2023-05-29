@@ -10,4 +10,4 @@ coloredlogs~=15.0.1
 verboselogs~=1.7
 #backoff==2.2.1
 fastapi==0.95.2
-PyJWT==2.6.0
+PyJWT==2.7.0
