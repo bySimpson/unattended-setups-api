@@ -1,5 +1,6 @@
 import datetime
 import humanize
+import requests
 
 from fastapi import FastAPI, Depends, Request, HTTPException, Response
 from fastapi.responses import JSONResponse
@@ -7,6 +8,7 @@ from starlette.middleware.cors import CORSMiddleware
 from decouple import config
 from src.models import APIStatus, ScriptItems
 from src.githubclient import GitHubClient
+from fastapi_utils.tasks import repeat_every
 
 version = config("VERSION", default="DEV", cast=str)
 start_time = datetime.datetime.now()
@@ -64,3 +66,10 @@ chmod +x unattended-setups
 wait $ProcessID
 shred -u -f ./unattended-setups"""
     return Response(content=script, media_type="text")
+
+@app.on_event("startup")
+@repeat_every(seconds=60 * 5)
+def update_monitoring():
+    m_url = config("MONITORING_URL", default="", cast=str)
+    if m_url:
+      requests.get(m_url)  
