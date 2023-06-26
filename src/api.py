@@ -60,7 +60,7 @@ async def get_install_script_for_branch(branch: str):
     script = f"""#!/usr/bin/env bash
 
 set -e
-wget "https://github.com/bySimpson/unattended-setups/releases/download/{branch}/unattended-setups-$(uname -i)-unknown-linux-gnu.tar.gz" -O - | tar -xz
+wget "https://github.com/bySimpson/unattended-setups/releases/download/{branch}/unattended-setups-$(uname -m)-unknown-linux-gnu.tar.gz" -O - | tar -xz
 chmod +x unattended-setups
 ./unattended-setups && ProcessID=$!
 wait $ProcessID
