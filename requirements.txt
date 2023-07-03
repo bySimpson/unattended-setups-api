@@ -5,7 +5,7 @@ uvicorn==0.22.0
 python-decouple~=3.8
 dnspython~=2.3.0
 requests==2.31.0
-humanize==4.6.0
+humanize==4.7.0
 coloredlogs~=15.0.1
 verboselogs~=1.7
 #backoff==2.2.1
