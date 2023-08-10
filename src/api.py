@@ -2,17 +2,22 @@ import datetime
 import humanize
 import requests
 
-from fastapi import FastAPI, Depends, Request, HTTPException, Response
-from fastapi.responses import JSONResponse
+
+from fastapi import FastAPI, HTTPException, Response
 from starlette.middleware.cors import CORSMiddleware
+from fastapi_utils.tasks import repeat_every
+from api_analytics.fastapi import Analytics
 from decouple import config
 from src.models import APIStatus, ScriptItems
 from src.githubclient import GitHubClient
-from fastapi_utils.tasks import repeat_every
+
+
 
 version = config("VERSION", default="DEV", cast=str)
+analytics = config("ANALYTICS_KEY", default="", cast=str)
 start_time = datetime.datetime.now()
 github_client = GitHubClient()
+
 
 if version == "%VER%":
     version = "DEV"
@@ -29,6 +34,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+if analytics != "":
+    app.add_middleware(Analytics, api_key=analytics)
 
 
 @app.get("/",
