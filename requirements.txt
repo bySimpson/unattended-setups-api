@@ -5,7 +5,7 @@ requests==2.31.0
 humanize==4.8.0
 coloredlogs~=15.0.1
 verboselogs~=1.7
-fastapi==0.101.0
+fastapi==0.101.1
 PyJWT==2.8.0
 fastapi-utils==0.2.1
 fastapi-analytics==1.1.4
