@@ -2,7 +2,7 @@
 FROM python:3-alpine as build
 WORKDIR /usr/src/app
 
-RUN apk add --no-cache --update gcc libc-dev linux-headers alpine-sdk git && rm -rf /var/cache/apk/*
+RUN apk add --no-cache --update gcc libc-dev linux-headers alpine-sdk git cargo rust && rm -rf /var/cache/apk/*
 
 COPY .git .
 COPY .env.template .
