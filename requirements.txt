@@ -8,4 +8,4 @@ verboselogs~=1.7
 fastapi==0.112.1
 PyJWT==2.9.0
 fastapi-utils==0.7.0
-fastapi-analytics==1.2.2
+fastapi-analytics==1.2.3
