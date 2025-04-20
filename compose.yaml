@@ -1,0 +1,8 @@
+services:
+  unattended-setups:
+    image: ghcr.io/bysimpson/unattended-setups-api
+    env_file:
+      - .env
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
