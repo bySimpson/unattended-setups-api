@@ -13,5 +13,5 @@ python3 main.py
 doker run -p 8080:8080 \
     -e GITHUB_USERNAME=bySimpson \ 
     -e GITHUB_REPOSITORY=unattended-setups \
-    -e GITHUB_API_KEY=YOUR_API_KEY lordsimpson/unattended-setups-api:latest
+    -e GITHUB_API_KEY=YOUR_API_KEY ghcr.io/bysimpson/unattended-setups-api:latest
 ````
