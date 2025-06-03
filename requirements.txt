@@ -8,5 +8,5 @@ verboselogs~=1.7
 fastapi==0.115.12
 PyJWT==2.10.1
 fastapi-utils==0.8.0
-fastapi-analytics==1.2.4
+fastapi-analytics==1.2.5
 typing-inspect==0.9.0
